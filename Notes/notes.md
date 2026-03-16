@@ -15,7 +15,7 @@ That is not wrong. But it is incomplete — and the gap between those two is whe
 ### What a Prompt Actually Is in Production
 
 A prompt in production is **not one thing**. It is an assembled object made of multiple layers that gets constructed dynamically at runtime, sent to the model, and discarded. You never see it as a whole unless you log it explicitly.
-
+```
 ┌─────────────────────────────────────┐
 │         SYSTEM PROMPT               │  ← Static. Lives in a file/registry.
 │   "You are a helpful assistant..."  │     Set by the engineer. Rarely changes.
@@ -29,7 +29,7 @@ A prompt in production is **not one thing**. It is an assembled object made of m
 │         USER MESSAGE                │  ← Dynamic. Changes every request.
 │   "Summarise this for me..."        │     What the end user actually typed.
 └─────────────────────────────────────┘
-
+```
 
 All four layers get **concatenated into a single string** and sent to the model as one token sequence. The model sees no boundaries between them.
 
